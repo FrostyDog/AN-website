@@ -39,6 +39,10 @@ a {
   color: white;
 }
 
+.center-front h1{
+  text-transform: uppercase;
+}
+
 .title {
   padding: 15px;
   border: 3px rgba(252, 3, 103, 0.3) dashed  ;
@@ -52,6 +56,7 @@ a {
   position: relative;
   border-radius: 20px;
   top: 30%;
+  color:white;
 }
 
 .button:hover {
@@ -106,6 +111,7 @@ a {
   flex-direction: row;
   justify-content: space-around;
   margin: 30px;
+  flex-wrap: wrap;
 }
 
 .portfolio-item {
@@ -126,6 +132,11 @@ a {
   box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
 }
 
+.shadow{
+-webkit-box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
+-moz-box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
+box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);}
+
 .portfolio-item:hover h3 {
   color: red;
 }
@@ -133,6 +144,7 @@ a {
 .portfolio-item:hover {
 background-color: rgba(255, 0, 0, 0.2);
 }
+
 
 .img-cont{
   width: 100%;
@@ -157,6 +169,16 @@ background-color: rgba(255, 0, 0, 0.2);
   transform: translate(-50%,-50%);
 }}
 
+@media only screen and (max-width: 800px) {
+  .portfolio-item {
+    display: flex;
+    flex-direction: column;
+    /* padding: 15px; */
+    padding-bottom: 10px;
+    width: 80%;
+    margin: 10px;
+}}
+
 /* Animations */
 
 .fade-in, #portfolio div {
@@ -165,8 +187,8 @@ background-color: rgba(255, 0, 0, 0.2);
 }
 
 .fade-in5 {
-	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 5s both;
-	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 5s both;
+	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
 }
 
 @-webkit-keyframes fade-in {

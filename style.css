@@ -1,0 +1,187 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto; */
+  font-family: Helvetica;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.center-front {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.center-front a {
+    text-transform: lowercase;
+}
+
+.center-front h1, .center-front h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.title {
+  padding: 15px;
+  border: 3px rgba(252, 3, 103, 0.3) dashed  ;
+  background-color: rgba(252, 3, 103, 0.8);
+  width: 100%;
+}
+
+.button {
+  padding: 20px;
+  background-color: rgba(252, 3, 103, 1);
+  position: relative;
+  border-radius: 20px;
+  top: 30%;
+}
+
+.button:hover {
+  background-color: rgba(252, 3, 103, 0.7);
+}
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+.video-container video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 44%;
+  transform: translate(-50%,-50%);
+}
+
+
+#portfolio{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.portfolio-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 30px;
+}
+
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  /* padding: 15px; */
+  padding-bottom: 10px;
+  width: 25%;
+  height: 55vh;
+  text-align: center;
+  color: black;
+  border: 3px black solid;
+  border-radius: 10px;
+  overflow: hidden;
+  /* shadow */
+  -webkit-box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
+  -moz-box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
+  box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.65);
+}
+
+.portfolio-item:hover h3 {
+  color: red;
+}
+
+.portfolio-item:hover {
+background-color: rgba(255, 0, 0, 0.2);
+}
+
+.img-cont{
+  width: 100%;
+  height: 85%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media only screen and (min-width: 1600px) {
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}}
+
+/* Animations */
+
+.fade-in, #portfolio div {
+	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+}
+
+.fade-in5 {
+	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 5s both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 5s both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

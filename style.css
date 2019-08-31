@@ -179,6 +179,13 @@ text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
   justify-content: flex-start;
 }
 
+@media only screen and (max-width: 800px) {
+  .aboutme-body{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .aboutme-body img{
   /* border: 1px black solid; */
   border-radius: 20px;
@@ -344,6 +351,19 @@ background-color: rgba(255, 0, 0, 0.2);
 
 #contact button {
   font-size: 14pt;
+}
+
+#contact .send {
+  border: 3px black solid;
+  border-radius: 30px;
+    background-color: rgba(252, 3, 103, 0.7);
+    width: 15%;
+    color: white;
+}
+
+#contact .send:hover {
+  opacity: 0.9;
+  cursor: pointer;
 }
 
 /* #contact button {

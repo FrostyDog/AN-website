@@ -1,51 +1,68 @@
 <?php
-
-// Put contacting email here
-$php_main_email = "aleks.gubskyy@gmail.com";
-
-//Fetching Values from URL
-$php_name = $_POST['ajax_name'];
-$php_email = $_POST['ajax_email'];
-$php_message = $_POST['ajax_message'];
-
-
-
-//Sanitizing email
-$php_email = filter_var($php_email, FILTER_SANITIZE_EMAIL);
-
-
-//After sanitization Validation is performed
-if (filter_var($php_email, FILTER_VALIDATE_EMAIL)) {
-
-
-		$php_subject = "Message from contact form";
-
-		// To send HTML mail, the Content-type header must be set
-		$php_headers = 'MIME-Version: 1.0' . "\r\n";
-		$php_headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$php_headers .= 'From:' . $php_email. "\r\n"; // Sender's Email
-		$php_headers .= 'Cc:' . $php_email. "\r\n"; // Carbon copy to Sender
-
-		$php_template = '<div style="padding:50px;">Hello ' . $php_name . ',<br/>'
-		. 'Thank you for contacting us.<br/><br/>'
-		. '<strong style="color:#f00a77;">Name:</strong>  ' . $php_name . '<br/>'
-		. '<strong style="color:#f00a77;">Email:</strong>  ' . $php_email . '<br/>'
-		. '<strong style="color:#f00a77;">Message:</strong>  ' . $php_message . '<br/><br/>'
-		. 'This is a Contact Confirmation mail.'
-		. '<br/>'
-		. 'We will contact you as soon as possible .</div>';
-		$php_sendmessage = "<div style=\"background-color:#f5f5f5; color:#333;\">" . $php_template . "</div>";
-
-		// message lines should not exceed 70 characters (PHP rule), so wrap it
-		$php_sendmessage = wordwrap($php_sendmessage, 70);
-
-		// Send mail by PHP Mail Function
-		mail($php_main_email, $php_subject, $php_sendmessage, $php_headers);
-		echo "";
-
-
-} else {
-	echo "<span class='contact_error'>* Invalid email *</span>";
-}
-
+/*
+This first bit sets the email address that you want the form to be submitted to.
+You will need to change this value to a valid email address that you can access.
+*/
+$webmaster_email = "anna.figura259@gmail.com";
+/*
+This bit sets the URLs of the supporting pages.
+If you change the names of any of the pages, you will need to change the values here.
+*/
+$feedback_page = "support.html";
+$error_page = "error_message.html";
+$thankyou_page = "./";
+/*
+This next bit loads the form field data into variables.
+If you add a form field, you will need to add it here.
+*/
+if (isset($_POST['submit1'])) {
+$email_address = $_POST["email"] ;
+$comments = $_POST["message"] ;
+$first_name = $_POST["name"] ;
+$msg =
+"First Name: " . $first_name . "\r\n" .
+"Email: " . $email_address . "\r\n" .
+"Comments: " . $comments ;
+/*
+The following function checks for email injection.
+Specifically, it checks for carriage returns - typically used by spammers to inject a CC list.
+*/
+function isInjected($str) {
+	$injections = array('(\n+)',
+	'(\r+)',
+	'(\t+)',
+	'(%0A+)',
+	'(%0D+)',
+	'(%08+)',
+	'(%09+)'
+	);
+	$inject = join('|', $injections);
+	$inject = "/$inject/i";
+	if(preg_match($inject,$str)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+ }
+// // If the user tries to access this script directly, redirect them to the feedback form,
+// if (!isset($_REQUEST['email_address'])) {
+// header( "Location: $feedback_page" );
+// }
+// // If the form fields are empty, redirect to the error page.
+// elseif (empty($first_name) || empty($email_address)) {
+// header( "Location: $error_page" );
+// }
+// /*
+// If email injection is detected, redirect to the error page.
+// If you add a form field, you should add it here.
+// */
+// elseif ( isInjected($email_address) || isInjected($first_name)  || isInjected($comments) ) {
+// header( "Location: $error_page" );
+// }
+// // If we passed all previous tests, send the email then redirect to the thank you page.
+//  else {
+	mail( "$webmaster_email", "Feedback Form Results", $msg );
+	header( "Location: $thankyou_page" ); }
+//  }
 ?>
